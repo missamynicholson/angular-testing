@@ -6,12 +6,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/controllers/ToDoController.js"></script>
+    <script type="text/javascript" src="js/factories/ToDoFactory.js"></script>
   </head>
   <body>
     <div ng-controller="ToDoAppController as controller">
       <ul>
         <li ng-repeat="todo in controller.todos">
-          <p>{{todo.text}} - {{todo.completed ? "completed" : "not completed"}}
+          {{todo.text}} - {{todo.completed ? "completed" : "not completed"}}
+          <button ng-click="todo.complete()">Complete</button>
         </li>
       </ul>
       <input ng-model="toDoText" type="text">

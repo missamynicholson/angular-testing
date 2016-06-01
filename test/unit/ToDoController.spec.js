@@ -1,20 +1,22 @@
 describe("ToDoAppController", function() {
   beforeEach(module("toDoApp"));
 
-  var controller;
+  var controller, ToDoFactory;
 
-  beforeEach(inject(function($controller) {
+  beforeEach(inject(function($controller, _ToDoFactory_) {
     controller = $controller("ToDoAppController");
+    ToDoFactory = _ToDoFactory_;
   }));
 
   it('initialises with an array of todos', function() {
-    var todos = [{text: "ToDo1", completed: true}, {text: "ToDo2", completed: false}];
+    var todos = [new ToDoFactory("ToDo1", true), new ToDoFactory("ToDo2")];
     expect(controller.todos).toEqual(todos);
   });
 
   it('adds a todo to todos array', function() {
     controller.addToDo("ToDo3");
-    expect(controller.todos).toContain({text: "ToDo3", completed: false});
+    var todo = new ToDoFactory("ToDo3");
+    expect(controller.todos).toContain(todo);
   });
 
   it('removes a todo from todos array', function() {

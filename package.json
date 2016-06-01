@@ -1,19 +1,22 @@
 {
-  "name": "angular-js",
+  "name": "angular-test",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chriselevate/angular-js.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd app && ../node_modules/http-server/bin/http-server",
+    "webdriver-manager": "./node_modules/protractor/bin/webdriver-manager",
+    "protractor": "./node_modules/protractor/bin/protractor"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/chriselevate/angular-js/issues"
+  "devDependencies": {
+    "bower": "^1.7.9"
   },
-  "homepage": "https://github.com/chriselevate/angular-js#readme"
+  "dependencies": {
+    "bower": "^1.7.9",
+    "http-server": "^0.9.0",
+    "protractor": "^3.3.0"
+  },
+  "description": ""
 }

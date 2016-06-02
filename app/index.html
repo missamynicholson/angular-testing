@@ -5,6 +5,7 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers/ToDoController.js"></script>
+    <script src="js/services/ToDoFactory.js"></script>
     <title>Todos App</title>
   </head>
 <body>
@@ -12,6 +13,7 @@
     <ul>
       <li ng-repeat="todo in controller.todos">
         {{todo.text}}: {{todo.completed ? "completed" : "not completed"}}
+        <button id="complete" ng-click="todo.complete()">Complete</button>
       </li>
     </ul>
     <input type="text" ng-model="thetask" placeholder="Enter your task here">
@@ -20,20 +22,3 @@
   </div>
 </body>
 </html>
-
-
-<!-- <body>
-  <div ng-controller="ToDoController as controller">
-    <p ng-repeat="onetodo in controller.todos">
-      {{ onetodo.task }} : {{ onetodo.completed ? "completed" : "not completed" }}
-      <button ng-click="onetodo.complete();">Click when complete</button>
-    </p>
-
-    <input type="text" ng-model="thetask" placeholder="Enter your task here">
-
-    <button ng-click="controller.addToDo(thetask);">Add task</button>
-    <button ng-click="controller.removeLastTask();">Remove last task</button>
-
-
-  </div>
-</body> -->

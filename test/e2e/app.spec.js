@@ -5,27 +5,13 @@ describe("app", function() {
   });
 });
 
-describe('Todos tracker', function() {
-  it('has a todo', function() {
-    browser.get('/');
-    var todo = $('#todo');
-    expect(todo.getText()).toContain('ToDo1: completed');
-  });
-
-  it('has another todo', function() {
-    browser.get('/');
-    var list = $$('ul li');
-    expect(list.get(1).getText()).toEqual("ToDo2: not completed");
-  });
-});
-
 describe('add a todo', function() {
   it('adds a todo to the page', function() {
     browser.get('/');
     $('input').sendKeys('ToDo3');
     element(by.id('add')).click();
     var list = $$('ul li');
-    expect(list.get(2).getText()).toEqual("ToDo3: not completed");
+    expect(list.first().getText()).toContain("ToDo3: not completed");
   });
 });
 
@@ -36,6 +22,17 @@ describe('removes a todo', function() {
     element(by.id('add')).click();
     var list = $$('ul li');
     element(by.id('remove')).click();
-    expect(list.count()).toEqual(2);
+    expect(list.count()).toEqual(0);
+  });
+});
+
+describe('complete a todo', function() {
+  it('completes a todo from the page', function() {
+    browser.get('/');
+    $('input').sendKeys('ToDo3');
+    element(by.id('add')).click();
+    var list = $$('ul li');
+    list.get(0).element(by.id('complete')).click();
+    expect(list.get(0).getText()).toContain("ToDo3: completed");
   });
 });

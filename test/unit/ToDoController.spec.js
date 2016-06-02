@@ -17,4 +17,9 @@ describe('ToDoController', function() {
     var newTodo = {text: "ToDo3", completed: false};
     expect(ctrl.todos).toContain(newTodo);
   });
+
+  it('removes a todo out of the todos array', function() {
+    ctrl.removeTodo();
+    expect(ctrl.todos.length).toEqual(1);
+  });
 });

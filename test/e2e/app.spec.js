@@ -28,3 +28,14 @@ describe('add a todo', function() {
     expect(list.get(2).getText()).toEqual("ToDo3: not completed");
   });
 });
+
+describe('removes a todo', function() {
+  it('removes todo from the page', function() {
+    browser.get('/');
+    $('input').sendKeys('ToDo3');
+    element(by.id('add')).click();
+    var list = $$('ul li');
+    element(by.id('remove')).click();
+    expect(list.count()).toEqual(2);
+  });
+});

@@ -49,4 +49,25 @@ describe("toDoApp", function() {
     $$('ul li').get(2).element(by.buttonText('Complete')).click();
     expect($$('ul li').get(2).getText()).toContain("ToDo3 - completed");
   });
+
+  it("should show all todos if no filter or 'All' is chosen", function() {
+    browser.get('/');
+    var select = element(by.model('showCompleted'));
+    select.$('[value=""]').click();
+    expect($$('ul li').count()).toBe(2);
+  });
+
+  it("should filter todos to show completed only", function() {
+    browser.get('/');
+    var select = element(by.model('showCompleted'));
+    select.$('[value="true"]').click();
+    expect($$('ul li').count()).toBe(1);
+  });
+
+  it("should filter todos to show active only", function() {
+    browser.get('/');
+    var select = element(by.model('showCompleted'));
+    select.$('[value="false"]').click();
+    expect($$('ul li').count()).toBe(1);
+  });
 });

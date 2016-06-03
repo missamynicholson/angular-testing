@@ -11,8 +11,13 @@
   </head>
   <body>
     <div ng-controller="ToDoAppController as controller">
+      <select ng-model="showCompleted">
+        <option value="" selected>All</option>
+        <option value="true">Completed</option>
+        <option value="false">Active</option>
+      </select>
       <ul>
-        <li ng-repeat="todo in controller.todos">
+        <li ng-repeat="todo in controller.todos | filter:showCompleted">
           {{todo.text}} - {{todo.completed ? "completed" : "not completed"}}
           <button ng-click="todo.complete()">Complete</button>
         </li>

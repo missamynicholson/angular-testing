@@ -30,4 +30,9 @@ describe("ToDoAppController", function() {
     expect(controller.todos).not.toContain({text: "ToDo2", completed: false});
   });
 
+  it('removes all completed todos from todos array', function() {
+    controller.removeCompleted();
+    expect(controller.todos).not.toContain({text: "ToDo1", completed: true});
+  });
+
 });

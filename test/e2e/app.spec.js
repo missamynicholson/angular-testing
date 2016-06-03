@@ -84,4 +84,12 @@ describe("toDoApp", function() {
     var total = element(by.id('total'));
     expect(total.getText()).toMatch("3");
   });
+
+  it("remove all completed tasks", function() {
+    browser.get('/');
+    $('input').sendKeys('ToDo3');
+    element(by.id('add')).click();
+    element(by.id('removeCompleted')).click();
+    expect($$('ul li').count()).toBe(2);
+  });
 });

@@ -8,7 +8,12 @@ toDoApp.controller("ToDoAppController", ["ToDoFactory", "ToDoService", function(
     self.todos.push(new ToDoFactory(todoText));
   };
 
-  this.removeToDo = function(todo) {
+  this.removeToDo = function() {
     self.todos.pop();
   };
+
+  this.removeCompleted = function() {
+    self.todos = self.todos.filter(function(todo){return !todo.completed ;});
+  };
+
 }]);

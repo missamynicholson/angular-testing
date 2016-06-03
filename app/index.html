@@ -16,6 +16,7 @@
         <option value="true">Completed</option>
         <option value="false">Active</option>
       </select>
+      <p id="total">Total todos: {{controller.todos.length}}</p>
       <ul>
         <li ng-repeat="todo in controller.todos | filter:showCompleted">
           {{todo.text}} - {{todo.completed ? "completed" : "not completed"}}

@@ -70,4 +70,18 @@ describe("toDoApp", function() {
     select.$('[value="false"]').click();
     expect($$('ul li').count()).toBe(1);
   });
+
+  it("view total number of tasks", function() {
+    browser.get('/');
+    var total = element(by.id('total'));
+    expect(total.getText()).toMatch("2");
+  });
+
+  it("view total number of tasks if one is added", function() {
+    browser.get('/');
+    $('input').sendKeys('ToDo3');
+    element(by.id('add')).click();
+    var total = element(by.id('total'));
+    expect(total.getText()).toMatch("3");
+  });
 });
